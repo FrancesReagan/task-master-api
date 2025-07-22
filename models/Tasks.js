@@ -18,7 +18,16 @@ status: {
 },
 createdAt: {
   type: Date,
-  
-}
+  default: Date.now,
+},
+project: {
+  type: Schema.Types.ObjectId,
+  ref: "Project",
+  required: true,
+},
 
-})
+});
+
+const Task = mongoose.model("Task", taskSchema);
+
+export default Task;
