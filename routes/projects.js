@@ -12,7 +12,7 @@ router.get("/", async (req, res)=> {
   try {
     const projects = await Project.find({ user: req.user._id })
     // add user details sans password//
-    .populate("user", "username email");
+    .populate("user", "username email")
     .populate("tasks", "title status createdAt");
     res.json(projects);
   } catch (error) {
