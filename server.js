@@ -1,3 +1,4 @@
+// main entry point//
 import express from "express";
 import dotenv from "dotenv";
 import db from "./config/connection.js";

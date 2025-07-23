@@ -1,3 +1,5 @@
+// Project schema with tasks array//
+
 import mongoose, { Schema } from "mongoose";
 
 const projectSchema = new Schema({

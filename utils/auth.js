@@ -1,3 +1,4 @@
+// JWT authenication functions//
 import jwt from "jsonwebtoken";
 
 const secret = process.env.JWT_SECRET;
