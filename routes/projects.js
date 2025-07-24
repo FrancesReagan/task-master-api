@@ -60,3 +60,24 @@ router.post("/", async (req, res) => {
     res.status(400).json(error);
   }
 });
+
+// PUT  /api/projects/:id  - to update a project //
+router.put("/:id", async (req, res) => {
+  try {
+    const projectToUpdate = await Project.findById(req.params.id);
+   if (!projectToUpdate) {
+    return res.status(400).json({ message: "Could not find a project by the id you provided"});
+   }
+  //  auth check//
+  if (projectToUpdate.user.toString() !== req.user._id.toString()) {
+    return res.status(403).json({ message: "Authorization failed....you can not update this project."});
+  }
+  const project = await Project.findByIdAndUpdate(req.params.id, req.body, { new: true})
+  .populate("user")
+  .populate ("tasks");
+
+  res.json(project);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
