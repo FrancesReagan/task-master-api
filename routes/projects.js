@@ -15,8 +15,8 @@ router.get("/", async (req, res)=> {
   try {
     const projects = await Project.find({ user: req.user._id })
     // add user details sans password//
-    .populate("user", "username email")
-    .populate("tasks", "title status createdAt");
+    .populate("user")
+    .populate("tasks");
     res.json(projects);
   } catch (error) {
     res.status(500).json(error);
@@ -27,7 +27,7 @@ router.get("/", async (req, res)=> {
 router.get("/:id", async (req,res)=> {
   try {
     const project = await Project.findById(req.params.id) 
-    .populate("user", "username email")
+    .populate("user")
     // brings all task details//
     .populate("tasks");
 
@@ -40,7 +40,23 @@ router.get("/:id", async (req,res)=> {
       return res.status(403).json({ message: "Authorization failed...User can't not access this Project"});
     }
     res.json(project);
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+// POST  /api/projects - to create a new project
+router.post("/", async (req, res) => {
+  try {
+    const project = await Project.create({
+      ...req.body,
+      user: req.user._id,
+      tasks: []
+    });
+    // User info is populated for the response//
+    await project.populate("user");
+    res.status(201).json(project);
+  } catch (error) {
+    res.status(400).json(error);
   }
 });
