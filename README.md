@@ -92,8 +92,10 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
 
  __Manual Testing Guide__
  
+ ----------------------------------------------------------------------------------
+ 
   *  __Register/Create User__: click new HTTP request in postman---
-  *  
+    
      - Method: POST
        
      - URL endpoint to test: http//localhost:3000/api/users/register
@@ -122,9 +124,10 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
 
           -make a few more users to populate data.
 
-          
+      ----------------------------------------------------------------------------------------------------------
 
    * __Login User__ -
+     
      - Method: POST
        
      - URL endpoint to test: http//localhost:3000/api/users/login
@@ -137,20 +140,25 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           
            `{
                 "email": "starbright@seeyoutonight.com",
+          
                 "password": "wishingstar678"
+          
              }`
           
           -click send
           
           -should see Status: 201 and in the body token first, then user id username, email, and password now hashed
+          
           <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/c30d56fc-478e-4a83-a014-2f165d8b6929" />
 
           - Copy the token from response.
 
 ---------------------------------------------------------------------------------------
 
-* __Create Project (protected route)__ -
+* __Create Project (protected route)__
+  
   _click new HTTP request in postman_
+  
      - Method: POST 
        
      - URL endpoint to test: http://localhost:3000/api/projects
@@ -162,6 +170,7 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
        -click on "Body" --- and type in the body new project name and description:
        
           `{
+       
               "name": "Interdimensional travel",
        
               "description": "top-secret project--transport transportal transportation proven successful"
