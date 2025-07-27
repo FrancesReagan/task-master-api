@@ -2,7 +2,6 @@
 
 import express from "express";
 import Project from "../models/Projects.js";
-import Task from "../models/Tasks.js";
 import { authMiddleware } from "../utils/auth.js";  
 
 const router = express.Router();  
@@ -14,29 +13,23 @@ router.use(authMiddleware);
 router.get("/", async (req, res)=> {
   try {
     const projects = await Project.find({ user: req.user._id })
-    // add user details sans password//
-    .populate("user")
-    .populate("task");
     res.json(projects);
   } catch (error) {
     res.status(500).json(error);
   }
 });
 
-// GET  /api/projects/:id  --retrieve a single projectby ID...includes all task details//
+// GET  /api/projects/:id  --retrieve a single projectby ID...checking if user owns project as well//
 router.get("/:id", async (req,res)=> {
   try {
     const project = await Project.findById(req.params.id) 
-    .populate("user")
-    // brings all task details//
-    .populate("task");
-
+    
     if(!project) {
       return res.status(404).json({ message: "Can not find this project ID"});
     }
 
-    // auth check//
-    if (project.user._id.toString()!==req.user._id.toString()) {
+    // auth or seeing if user owns this projeect ---check//
+    if (project.user.toString()!==req.user._id.toString()) {
       return res.status(403).json({ message: "Authorization failed...User can't not access this Project"});
     }
     res.json(project);
@@ -45,38 +38,40 @@ router.get("/:id", async (req,res)=> {
   }
 });
 
-// POST  /api/projects - to create a new project
+// POST  /api/projects - to create a new project//
 router.post("/", async (req, res) => {
   try {
     const project = await Project.create({
       ...req.body,
+      // set the owner from auth. user//
       user: req.user._id,
       // tasks: []
     });
-    // User info is populated for the response//
-    const newProject =  await project.populate("user","username");
-    res.status(201).json(newProject);
+
+    res.status(201).json(project);
   } catch (error) {
     res.status(400).json(error);
   }
 });
 
-// PUT  /api/projects/:id  - to update a project //
+// PUT  /api/projects/:id  - to update a project with auth user check//
 router.put("/:id", async (req, res) => {
   try {
-    const projectToUpdate = await Project.findById(req.params.id);
-   if (!projectToUpdate) {
+    const project = await Project.findById(req.params.id);
+   if (!project) {
     return res.status(400).json({ message: "Could not find a project by the id you provided"});
    }
   //  auth check//
-  if (projectToUpdate.user.toString() !== req.user._id.toString()) {
+  if (project.user.toString() !== req.user._id.toString()) {
     return res.status(403).json({ message: "Authorization failed....you can not update this project."});
   }
-  const project = await Project.findByIdAndUpdate(req.params.id, req.body, { new: true})
-  .populate("user")
-  .populate ("tasks");
-
-  res.json(project);
+  const updatedProject = await Project.findByIdAndUpdate(
+    req.params.id, 
+    req.body, 
+    { new: true}
+  );
+  
+  res.json(updatedProject);
   } catch (error) {
     res.status(500).json(error);
   }
