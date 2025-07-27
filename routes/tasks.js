@@ -50,7 +50,7 @@ const project = await Project.findById(projectId);
 if(!project) {
   return res.status(404).json({ message:"Access not granted"});
 }
-// retrieve or get all projects for this particular project//
+// retrieve or get all tasks for this particular project//
 const tasks = await Task.find({ project: projectId });
     res.json(tasks);
 
@@ -59,24 +59,28 @@ const tasks = await Task.find({ project: projectId });
   }
 });
 
-// GET  /api/tasks/:id  - retrieve a single task by its ID//
-router.get("/:id", async (req,res) => {
+// PUT  /api/tasks/:id  - to update the task with Authorization//
+router.put("/:taskid", async (req,res) => {
   try {
-    const task = await Task.findById(req.params.id)
-    .populate("project");
+   
+    const { taskId } = req.params;
 
-    if(!task) {
-      return res.status(404).json({ message: "Requested id has no task associated with it"})
+    // find the task and populate the project//
+    const task = await Task.findById(taskId).populate("project");
+    if (!task) {
+      return res.status(404).json({ message : "Task is no where to be found..." });
     }
-    if(!task.project) {
-      return res.status(404).json({ message: "Associated arent project not found"});
+
+    // see if user owns the parent project of this task//
+    if(task.project.user.toString() !== "req.user._id.toString"()) {
+      return res.status(403).json({ message: "Sorry you don't have rights to access"})
     }
-    // auth check//
-    if (task.project.user.toString !== req.user._id.toString()) {
-      return res.status(403).json ({ message: "Authorization failed..You can not access this task." });
-    }  
-    res.json(task);
-  } catch  (error) {
+
+    // to update a task//
+    const updatedTask = await Task.findByIdAndUpdate(taskId, req.body, { new: true });
+    res.json( updatedTask );
+  } catch (error) {
     res.status(500).json(error);
   }
 });
+
