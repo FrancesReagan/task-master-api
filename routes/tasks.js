@@ -40,16 +40,16 @@ res.status(201).json(task);
 });
 
 
-// GET  /api/tasks - retrieve all logged in user's tasks//
-router.get("/", async (req, res) => {
+// GET /api/projects/:projectId/tasks ----this is to get all tasks for a particular project//
+router.get("/projects/:projectId/tasks", async (req, res) => {
   try {
-    // discover all of the projects owned by a user//
-    const userProjects = await Project.find({ user: req.user._id });
-    const projectIds = userProjects.map(project => project._id);
-    // for those projects discover all associated tasks//
-    const tasks = await Task.find({ project: { $in: projectIds }})
-    .populate("project");
-    // .sort({ createdAt: -1});
+    const { projectId } = req.params;
+
+    // find and then authenticate user //
+const project = await Project.findById(projectId);
+if(!project) {
+  return res.status(404).json({ message:"Access not granted"});
+}
 
     res.json(tasks);
 
