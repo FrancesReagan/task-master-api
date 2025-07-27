@@ -47,3 +47,18 @@ __FEATURES of TASK MASTER API__
  *  Security: Password hashing with bcrypt and protected routes.
    
  *  Database: MongoDB with Mongoose object document model ODM
+
+----------------------------------------------------------------------------------------------
+
+__TECH USED__:
+
+_Production dependencies_:
+ *  runtime - Node.js --ES6 module support---("type": "module" in package.json)
+ *  framework - Express.js --webframework (as stated above), routing, middleware.
+ *  Database ODM: Mongoose - MongoDB object modeling, schemas, and validation.
+ *  Authentication: jsonwebtoken - JWT token creation and verification.
+ *  password security: bcrypt - password hashing with "salt".
+ *  environment config: dotenv - load environment variables from .env file.
+ *  development tool: nodemon - auto-restart server anytime a file changes---love this:).
+
+----------------------------------------------------------------------------------------------------------
