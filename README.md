@@ -211,6 +211,24 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           -should see Status: 200 OK  -- and in the body of the response back should be a list of all the projects with their id, name, decription, user, timestamp.
             <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/d97c5626-b5b6-43f8-84a8-3385c3bfec80" />
 
+  ------------------------------------------------------------------------------------------------------------------
+
+  __GET Single Project__ -
+  _click new HTTP request in postman_
+     - Method: GET 
+       
+     - URL endpoint to test: http://localhost:3000/api/projects/PROJECT_ID_HERE
+       
+     - Headers: authorization: Bearer _ user token here (use the user token from the user you created the project for here)
+       
+       -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
+ 
+          -click send
+          
+          -should see Status: 200 OK  -- and in the body of the response back should be that specific project id, name of project, description of project, user associated with project, and time stamp.
+            <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/55bbfb35-178b-4ba7-a6eb-3bb59b0a5628" />
+
+
        
 
 
