@@ -19,20 +19,24 @@ router.post("/register", async (req, res) => {
 
 // POST /api/users/login - Authenticate a user and return a token
 router.post("/login", async (req, res) => {
+  try {
   const user = await User.findOne({ email: req.body.email });
 
   if (!user) {
-    return res.status(400).json({ message: "Can't find this user" });
+    return res.status(400).json({ message: "Invalid password or email" });
   }
 
   const correctPw = await user.isCorrectPassword(req.body.password);
 
   if (!correctPw) {
-    return res.status(400).json({ message: "Wrong password!" });
+    return res.status(401).json({ message: "Invalid password or email" });
   }
 
   const token = signToken(user);
   res.json({ token, user });
+} catch (error) {
+  res.status(500).json ({ message: "Server error during login attempt" });
+}
 });
 
 // Route to start the OAuth flow
