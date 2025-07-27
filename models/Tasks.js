@@ -1,5 +1,6 @@
 // Task schema with project reference//
 import mongoose, { Schema } from "mongoose";
+
 const taskSchema = new Schema({
   title: {
     type: String,
