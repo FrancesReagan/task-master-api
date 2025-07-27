@@ -107,8 +107,9 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           -should see Status: 200 ; see token (now created and assigned to this user), username, email, password, and userid (now created and assigned to this user)
            <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/81741642-dc2d-42eb-ad9b-2a4e99535049" />
 
-           -Save the users you create's token, username, email, password, and userid in a separate document somewhere for this project so you can use to continue to test--login, create project and tasks, get project
-            and tasks by id, update projects and tasks, and delete project and tasks.
+           -`Save the users you create's token, username, email, password, and userid in a separate document somewhere for this project so you can use to continue to test--login, create project and tasks, get project
+             and tasks by id, update projects and tasks, and delete project and tasks.`
+          
           -make a few more users
 
           
