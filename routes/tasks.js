@@ -50,7 +50,8 @@ const project = await Project.findById(projectId);
 if(!project) {
   return res.status(404).json({ message:"Access not granted"});
 }
-
+// retrieve or get all projects for this particular project//
+const tasks = await Task.find({ project: projectId });
     res.json(tasks);
 
   } catch (error) {
