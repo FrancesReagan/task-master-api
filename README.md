@@ -160,9 +160,11 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
        -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
  
        -click on "Body" --- and type in the body new project name and description:
+       
           `{
-              "name": "Star Power--harnessing starlight to power our homes",
-              "description": "top-secret project--to move away from fossil fuels forever"
+              "name": "Interdimensional travel",
+       
+              "description": "top-secret project--transport transportal transportation proven successful"
     
            }`
           
@@ -170,12 +172,13 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           
           -should see Status: 201 Created
        
-          <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/88d14961-26dd-4f02-aa2c-248bbee94448" />
-
-
+           and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see: -name of project, description, user id associated with project, project id, and createdAt time stamp.
+       
+          <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/e84ffd49-381c-44c8-ae39-37457435e33c" />
+       
           - Copy the project Id from the response.
 
-          - make a few more projects for this user by repeating the above steps but with new project name and description---save the project id with the user's token in a separate document to retrieve later to put
+          - make a few more projects for this user by repeating the above steps but with new project name and description---save the project id with the user's id in a separate document to retrieve later to put
             in Postman.
 
        -------------------------------------------------------------------------------------------------
