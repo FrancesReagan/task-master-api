@@ -107,12 +107,14 @@ router.delete("/:taskId", async (req,res) => {
 
   // if they do match and not different---then DELETE:) the task//
   await Task.findByIdAndUpdate(req.params.taskId);
+
   res.json({ message: "Task deleted successfully" });
-  } catch (
-   
-  ) {
-    
+
+  } catch (error) {
+    res.status(500).json(error);
   }
-})
+});
+
+export default router;
 
 
