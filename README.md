@@ -33,3 +33,17 @@ Express sends JSON response -->
 Frontend displays projects.
 
 ------------------------------------------------------------------------------------------------
+
+
+__FEATURES of TASK MASTER API__
+
+
+ *  User Managment - Registration, Login, and Authentication (JWT-Based Auth).
+ *  
+ *  Project Organization - CRUD --Create, Read, Update, and Delete projects (and tasks).
+ *  
+ *  Task Management - manage tasks within projects with status tracking.
+ *  
+ *  Security: Password hashing with bcrypt and protected routes.
+ *  
+ *  Database: MongoDB with Mongoose object document model ODM
