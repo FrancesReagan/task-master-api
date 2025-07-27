@@ -64,16 +64,52 @@ _Production dependencies_:
 ----------------------------------------------------------------------------------------------------------
 
 __INSTALLATION__:(in VS Code terminal)
+
  *  Clone repo - `git clone https://github.com/FrancesReagan/task-master-api.git`
+   
  *  `cd task-master-api`
+   
  *  install dependecies: `npm i express mongoose jsonwebtoken bcrypt dotenv nodemon`
+   
  *  create a `.env` file in root directory:
+   
    `MONGO_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/
     taskmasterapi?retryWrites=true&w=majority&appName=Cluster0`
+    
     `JWT_SECRET=your_super_secret_jwt_key_here`
+    
    `PORT=3000`
+   
  *  Start the dev server: `npm run dev`
 
    -------------------------------------------
 
-   
+__MANUAL TESTING with POSTMAN ext in VS CODE__
+  _Setup Postman Extension_
+  *  Install extension: search for "Postman" in VS code extensions (shortcut ctrl + shift key + X)
+  *  Sign in: click postman icon in sidebar, sign in to postman
+  *  Test Ready---not using test collections--doing manual testing
+
+ _Manual Testing Guide_
+  *  Register User: click new HTTP request in postman---
+     - Method: POST
+     - URL endpoint to test: http//localhost:3000/api/users/register
+     - Headers: application/json
+        - click "body" -- click "raw" ---select JSON
+        - type in body:
+           `{
+                "username": "starlight",
+                "email": "starbright@seeyoutonight.com",
+                "password": "wishingstar678"
+             }`
+          -click send
+      
+          -should see Status: 200 ; see token (now created and assigned to this user), username, email, password, and userid (now created and assigned to this user)
+           <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/81741642-dc2d-42eb-ad9b-2a4e99535049" />
+
+           -Save the users you create's token, username, email, password, and userid in a separate document somewhere for this project so you can use to continue to test--login, create project and tasks, get project
+            and tasks by id, update projects and tasks, and delete project and tasks.
+          -make a few more users
+
+          
+
