@@ -147,6 +147,32 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
 
           - Copy the token from response.
 
+---------------------------------------------------------------------------------------
+
+* __Create Project (protected route)__ -
+  _click new HTTP request in postman_
+     - Method: POST 
+       
+     - URL endpoint to test: http://localhost:3000/api/projects
+       
+     - Headers: content-type: application/json; authorization: Bearer _ user token here
+       
+       -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
+ 
+       -click on "Body" --- and type in the body new project name and description:
+          `{
+              "name": "Star Power--harnessing starlight to power our homes",
+              "description": "top-secret project--to move away from fossil fuels forever"
+    
+           }`
+          
+          -click send
+          
+          -should see Status: 201 Created 
+          <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/88d14961-26dd-4f02-aa2c-248bbee94448" />
+
+
+          - Copy the project Id from the response.
           
          
           
