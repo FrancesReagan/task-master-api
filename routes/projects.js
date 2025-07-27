@@ -77,24 +77,20 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// DELETE /api/projects/:id  - delete a project along with all its associated tasks//
+// DELETE /api/projects/:id  - delete a project with auth check//
 router.delete("/:id", async (req, res) => {
   try {
-    const projectToDelete = await Project.findById(req.params.id);
-    if (!projectToDelete) {
+    const project = await Project.findById(req.params.id);
+    if (!project) {
       return res.status(404).json({ message: "Unable to find a project with that id"});
     }
 // auth check//
-if (projectToDelete.user.toString()!== req.user._id.toString()) {
+if (project.user.toString()!== req.user._id.toString()) {
   return res.status(403).json({ message: "Authorization failed..you can not delete this project."});
 }
-// first--delete every task that is owned by the project//
-await Task.deleteMany({ project: req.params.id });
 
-// next--delete the entire project//
 await Project.findByIdAndDelete(req.params.id);
-
-res.json({ message: "All tasks belonging to project and project itself has been deleted."});
+res.json({ message: "Project has been deleted."});
   } catch (error) {
     res.status(500).json(error);
   }
