@@ -90,27 +90,64 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
   *  Sign in: click postman icon in sidebar, sign in to postman
   *  Test Ready---not using test collections--doing manual testing
 
- _Manual Testing Guide_
-  *  Register User: click new HTTP request in postman---
+ __Manual Testing Guide__
+ 
+  *  __Register/Create User__: click new HTTP request in postman---
+  *  
      - Method: POST
+       
      - URL endpoint to test: http//localhost:3000/api/users/register
+       
      - Headers: application/json
+       
         - click "body" -- click "raw" ---select JSON
+          
         - type in body:
            `{
                 "username": "starlight",
                 "email": "starbright@seeyoutonight.com",
                 "password": "wishingstar678"
              }`
+          
           -click send
       
           -should see Status: 200 ; see token (now created and assigned to this user), username, email, password, and userid (now created and assigned to this user)
+          
            <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/81741642-dc2d-42eb-ad9b-2a4e99535049" />
 
+            - Copy token from response for next requests.
+              
            -`Save the users you create's token, username, email, password, and userid in a separate document somewhere for this project so you can use to continue to test--login, create project and tasks, get project
              and tasks by id, update projects and tasks, and delete project and tasks.`
-          
-          -make a few more users
 
+          -make a few more users to populate data.
+
+          
+
+   * __Login User__ -
+     - Method: POST
+       
+     - URL endpoint to test: http//localhost:3000/api/users/login
+       
+     - Headers: application/json
+       
+        - click "body" -- click "raw" ---select JSON
+          
+        - type in body:
+          
+           `{
+                "email": "starbright@seeyoutonight.com",
+                "password": "wishingstar678"
+             }`
+          
+          -click send
+          
+          -should see Status: 200 and in the body token first, then user id username, email, and password now hashed
+          <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/c30d56fc-478e-4a83-a014-2f165d8b6929" />
+
+          - Copy the token from response.
+
+          
+         
           
 
