@@ -85,9 +85,9 @@ router.put("/:taskid", async (req,res) => {
 });
 
 // Delete  /api/tasks/:taskid --delete task  by task ID and to do that have to have correct authorization--otherwise denied ability to delete that task//
-// this says -- using the router.delete function to find a task by its ID---asyncronous set up---for the request from user to the response from database--this function try
+// LOGIC this says -- using the router.delete function to find a task by its ID---asyncronous set up---for the request from user to the response from database--this function try
 // find the object called taskId in the request parameters---give time or await to find the task by that taskid using the findById--once found populate that task in 
-// the associated project-----if the task is not found by the task id--return to the user the error message 404 with detailed message "Task not found by that taskID"
+// the associated project-----if the task is not found by the task id--return to the user the error message 404 with detailed message "Task not found in the project"
 router.delete("/:taskId", async (req,res) => {
   try {
     const { taskId } = req.params;
@@ -96,8 +96,18 @@ router.delete("/:taskId", async (req,res) => {
      if(!task) {
       return res.status(404).json({ message: "Task not found in the project"});
      }
-// Auth check--if task by that taskID is found --see if the user owns the parent project first before continuing//
+// Auth check--if task by that taskID is found --see if the user owns the parent project first before continuing----
+// LOGIC: take task and project and user and convert to string
+// on the other side of the comparsion logic !== take the requested user and their associated id and convert to string---then the comparsion logic says is the task,project, user information
+// matching or different from the user and associated ID in the request -- if they are not different--then move on to next function---which will be the delete function 
+// shown after the catch/error handling----if they are different--then return error of unauthorzied access --go no further //
+  if (task.project.user.toString() !== req.user._id.toString()) {
+    return res.status(403).json({ message: "you are not the owner of the project that contains that task---your access is denied"});
+  }
 
+  // if they do match and not different---then DELETE:) the task//
+  await Task.findByIdAndUpdate(req.params.taskId);
+  res.json({ message: "Task deleted successfully" });
   } catch (
    
   ) {
