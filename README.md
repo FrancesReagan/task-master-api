@@ -62,3 +62,9 @@ _Production dependencies_:
  *  development tool: nodemon - auto-restart server anytime a file changes---love this:).
 
 ----------------------------------------------------------------------------------------------------------
+
+__INSTALLATION__:(in VS Code terminal)
+ *  Clone repo - `git clone https://github.com/FrancesReagan/task-master-api.git`
+ *  `cd task-master-api`
+ *  install dependecies: `npm i express mongoose jsonwebtoken bcrypt dotenv nodemon`
+ *  create a `.env` file in root directory: 
