@@ -28,7 +28,7 @@ router.get("/:id", async (req,res)=> {
       return res.status(404).json({ message: "Can not find this project ID"});
     }
 
-    // auth or seeing if user owns this projeect ---check//
+    // authorization or seeing if user owns this projeect ---check//
     if (project.user.toString()!==req.user._id.toString()) {
       return res.status(403).json({ message: "Authorization failed...User can't not access this Project"});
     }

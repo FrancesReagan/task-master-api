@@ -18,7 +18,7 @@ const projectSchema = new Schema({
     default:Date.now,
   },
   user: {
-    typs: Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "User",
     required: true,
   }
