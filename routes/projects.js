@@ -16,7 +16,7 @@ router.get("/", async (req, res)=> {
     const projects = await Project.find({ user: req.user._id })
     // add user details sans password//
     .populate("user")
-    .populate("tasks");
+    .populate("task");
     res.json(projects);
   } catch (error) {
     res.status(500).json(error);
@@ -29,7 +29,7 @@ router.get("/:id", async (req,res)=> {
     const project = await Project.findById(req.params.id) 
     .populate("user")
     // brings all task details//
-    .populate("tasks");
+    .populate("task");
 
     if(!project) {
       return res.status(404).json({ message: "Can not find this project ID"});
@@ -51,11 +51,11 @@ router.post("/", async (req, res) => {
     const project = await Project.create({
       ...req.body,
       user: req.user._id,
-      tasks: []
+      // tasks: []
     });
     // User info is populated for the response//
-    await project.populate("user");
-    res.status(201).json(project);
+    const newProject =  await project.populate("user","username");
+    res.status(201).json(newProject);
   } catch (error) {
     res.status(400).json(error);
   }
@@ -104,3 +104,5 @@ res.json({ message: "All tasks belonging to project and project itself has been 
     res.status(500).json(error);
   }
 });
+
+export default router;

@@ -21,11 +21,8 @@ const projectSchema = new Schema({
     typs: Schema.Types.ObjectId,
     ref: "User",
     required: true,
-  },
-  tasks:[{
-    type: Schema.Types.ObjectId,
-    ref: "Task",
-  },],
+  }
+  
 
 });
 

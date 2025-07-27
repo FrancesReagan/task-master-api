@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
     // for those projects discover all associated tasks//
     const tasks = await Task.find({ project: { $in: projectIds }})
     .populate("project");
-    .sort({ createdAt: -1});
+    // .sort({ createdAt: -1});
 
     res.json(tasks);
 
@@ -39,7 +39,7 @@ router.get("/:id", async (req,res) => {
       return res.status(404).json({ message: "Requested id has no task associated with it"})
     }
     if(!task.project) {
-      return res.status(404).json({ message: "Parent project not found"});
+      return res.status(404).json({ message: "Associated arent project not found"});
     }
     // auth check//
     if (task.project.user.toString !== req.user._id.toString()) {
@@ -51,4 +51,17 @@ router.get("/:id", async (req,res) => {
   }
 });
 
-// POST /api/tasks 
+// POST /api/tasks   --this will create a new task and add this new task to the project's tasks array.//
+router.post("/", async (req,res) => {
+  
+try {
+ const { projectId, ...taskData } = req.body;
+
+ if(!projectId) {
+  return res.status(400).json({ message: "The projectId is required to be in the request body"});
+ }
+
+// 
+} catch (error) {
+} 
+})
