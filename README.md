@@ -111,7 +111,7 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           
           -click send
       
-          -should see Status: 200 ; see token (now created and assigned to this user), username, email, password, and userid (now created and assigned to this user)
+          -should see Status: 201 ; see token (now created and assigned to this user), username, email, password, and userid (now created and assigned to this user)
           
            <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/81741642-dc2d-42eb-ad9b-2a4e99535049" />
 
@@ -142,7 +142,7 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           
           -click send
           
-          -should see Status: 200 and in the body token first, then user id username, email, and password now hashed
+          -should see Status: 201 and in the body token first, then user id username, email, and password now hashed
           <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/c30d56fc-478e-4a83-a014-2f165d8b6929" />
 
           - Copy the token from response.
@@ -168,11 +168,35 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           
           -click send
           
-          -should see Status: 201 Created 
+          -should see Status: 201 Created
+       
           <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/88d14961-26dd-4f02-aa2c-248bbee94448" />
 
 
           - Copy the project Id from the response.
+
+          - make a few more projects for this user by repeating the above steps but with new project name and description---save the project id with the user's token in a separate document to retrieve later to put
+            in Postman.
+
+       -------------------------------------------------------------------------------------------------
+
+* __GET All projects)__ -
+  _click new HTTP request in postman_
+     - Method: GET 
+       
+     - URL endpoint to test: http://localhost:3000/api/projects/PROJECT_ID_HERE)
+       
+     - Headers: authorization: Bearer _ user token here (use the user token from the user you created the project for here)
+       
+       -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
+ 
+          -click send
+          
+          -should see Status: 201 Created
+       
+
+
+       
           
          
           
