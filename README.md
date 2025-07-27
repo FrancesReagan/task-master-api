@@ -67,4 +67,13 @@ __INSTALLATION__:(in VS Code terminal)
  *  Clone repo - `git clone https://github.com/FrancesReagan/task-master-api.git`
  *  `cd task-master-api`
  *  install dependecies: `npm i express mongoose jsonwebtoken bcrypt dotenv nodemon`
- *  create a `.env` file in root directory: 
+ *  create a `.env` file in root directory:
+   `MONGO_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/
+    taskmasterapi?retryWrites=true&w=majority&appName=Cluster0`
+    `JWT_SECRET=your_super_secret_jwt_key_here`
+   `PORT=3000`
+ *  Start the dev server: `npm run dev`
+
+   -------------------------------------------
+
+   
