@@ -151,7 +151,7 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           
           <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/c30d56fc-478e-4a83-a014-2f165d8b6929" />
 
-          - Copy the token from response.
+       - Copy the token from response.
 
 ---------------------------------------------------------------------------------------
 
@@ -189,6 +189,10 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
 
           - make a few more projects for this user by repeating the above steps but with new project name and description---save the project id with the user's id in a separate document to retrieve later to put
             in Postman.
+            
+            for example:
+            <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/23dd0099-00bb-4332-a2a0-df15038585ec" />
+
 
        -------------------------------------------------------------------------------------------------
 
