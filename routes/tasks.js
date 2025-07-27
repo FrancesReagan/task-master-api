@@ -4,7 +4,7 @@
 import express from "express";
 import Task from "../models/Tasks.js";
 import Project from "../models/Projects.js";
-import { authMiddleware } from "../utils/auth";
+import { authMiddleware } from "../utils/auth.js";
 
 const router = express.Router();
 
@@ -21,7 +21,7 @@ try {
 const project = await Project.findById(projectId);
 
  if(!project) {
-  return res.status(400).json({ message: "Project could not be found"});
+  return res.status(404).json({ message: "Project could not be found"});
  }
 
  if (project.user.toString() !== req.user._id.toString()) {
@@ -48,8 +48,14 @@ router.get("/projects/:projectId/tasks", async (req, res) => {
     // find and then authenticate user //
 const project = await Project.findById(projectId);
 if(!project) {
-  return res.status(404).json({ message:"Access not granted"});
+  return res.status(404).json({ message:"Project not found"});
 }
+
+// Auth check--see if use owns the project//
+if (project.user.toString()!==req.user._id.toString()) {
+  return res.status(403).json({ message: "Access denied"});
+}
+
 // retrieve or get all tasks for this particular project//
 const tasks = await Task.find({ project: projectId });
     res.json(tasks);
@@ -60,7 +66,7 @@ const tasks = await Task.find({ project: projectId });
 });
 
 // PUT  /api/tasks/:id  - to UPDATE the task with Authorization//
-router.put("/:taskid", async (req,res) => {
+router.put("/tasks/:taskid", async (req,res) => {
   try {
    
     const { taskId } = req.params;
@@ -72,7 +78,7 @@ router.put("/:taskid", async (req,res) => {
     }
 
     // see if user owns the parent project of this task//
-    if(task.project.user.toString() !== "req.user._id.toString"()) {
+    if(task.project.user.toString() !== req.user._id.toString()) {
       return res.status(403).json({ message: "Sorry you don't have rights to access"})
     }
 
@@ -88,7 +94,7 @@ router.put("/:taskid", async (req,res) => {
 // LOGIC this says -- using the router.delete function to find a task by its ID---asyncronous set up---for the request from user to the response from database--this function try
 // find the object called taskId in the request parameters---give time or await to find the task by that taskid using the findById--once found populate that task in 
 // the associated project-----if the task is not found by the task id--return to the user the error message 404 with detailed message "Task not found in the project"
-router.delete("/:taskId", async (req,res) => {
+router.delete("/tasks/:taskId", async (req,res) => {
   try {
     const { taskId } = req.params;
      // find the task and populate the project//
@@ -105,16 +111,19 @@ router.delete("/:taskId", async (req,res) => {
     return res.status(403).json({ message: "you are not the owner of the project that contains that task---your access is denied"});
   }
 
-  // if they do match and not different---then DELETE:) the task//
-  await Task.findByIdAndUpdate(req.params.taskId);
-
+  // if they do match and are not different---meaning the user owns the project and associated task wanting to delete --then DELETE:) the task//
+  // you await the time it takes for this action to happen---the find the task by the requested task by ID and delete it//
+  await Task.findByIdAndDelete(taskId);
+// then return to the user---a successfuly task delete message//
   res.json({ message: "Task deleted successfully" });
-
+// however, if there is some kind of other error from the server side not related to the user's request--then return a 500 server error to the user//
   } catch (error) {
     res.status(500).json(error);
   }
 });
 
+// make this route and all its handling requests about tasks logic to other files--in my app it  will be imported in the main server.js file and then in the server.js file
+// it will be mounted to handle specific routes//
 export default router;
 
 

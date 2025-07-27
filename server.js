@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import db from "./config/connection.js";
 import usersRouter  from "./routes/users.js";
 import projectRouters from "./routes/projects.js";
-import tasksRouters from "./routes/tasks.js";
+import tasksRouter from "./routes/tasks.js";
 
 // load env variables form .env//
 dotenv.config();
@@ -20,7 +20,8 @@ app.use(express.json());
 // route handlers -- mounting//
 app.use("/api/users", usersRouter);
 app.use("/api/projects", projectRouters);
-app.use("/api/tasks", tasksRouters);
+// this route handler below is for nested routes--/api/projects/:id/tasks//
+app.use("/api/tasks", tasksRouter);
 
 app.listen(PORT, () => console.log(`Server listening on localhost:${PORT}`));
 
