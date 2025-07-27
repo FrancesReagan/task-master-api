@@ -11,6 +11,35 @@ const router = express.Router();
 // authMiddle for all routes//
 router.use(authMiddleware);
 
+// POST to create task for a particular project --- endpoint: /api/projects/:productId/tasks ---//
+router.post("/projects/:projectId/tasks", async (req,res) => {
+  
+try {
+ const { projectId } = req.params;
+
+//  find project and then auth check if it does belong to logged in user//
+const project = await Project.findById(projectId);
+
+ if(!project) {
+  return res.status(400).json({ message: "Project could not be found"});
+ }
+
+ if (project.user.toString() !== req.user._id.toString()) {
+  return res.status(403).json({ message: "You are not allowed to access this..."});
+ }
+
+//  to create a task//
+const task = await Task.create({
+  ...req.body,
+  project: projectId,
+});
+res.status(201).json(task);
+} catch (error) {
+  res.status(400).json(error);
+}
+});
+
+
 // GET  /api/tasks - retrieve all logged in user's tasks//
 router.get("/", async (req, res) => {
   try {
@@ -50,18 +79,3 @@ router.get("/:id", async (req,res) => {
     res.status(500).json(error);
   }
 });
-
-// POST /api/tasks   --this will create a new task and add this new task to the project's tasks array.//
-router.post("/", async (req,res) => {
-  
-try {
- const { projectId, ...taskData } = req.body;
-
- if(!projectId) {
-  return res.status(400).json({ message: "The projectId is required to be in the request body"});
- }
-
-// 
-} catch (error) {
-} 
-})
