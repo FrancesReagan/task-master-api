@@ -59,7 +59,7 @@ const tasks = await Task.find({ project: projectId });
   }
 });
 
-// PUT  /api/tasks/:id  - to update the task with Authorization//
+// PUT  /api/tasks/:id  - to UPDATE the task with Authorization//
 router.put("/:taskid", async (req,res) => {
   try {
    
@@ -83,4 +83,23 @@ router.put("/:taskid", async (req,res) => {
     res.status(500).json(error);
   }
 });
+
+// Delete  /api/tasks/:taskid --delete task  by task ID and to do that have to have correct authorization--otherwise denied ability to delete that task//
+router.delete("/:taskId", async (req,res) => {
+  try {
+    const { taskId } = req.params;
+     // find the task and populate the project//
+     const task = await Task.findById(taskId).populate("project");
+     if(!task) {
+      return res.status(404).json({ message: "Task not found"});
+     }
+
+     
+  } catch (
+   
+  ) {
+    
+  }
+})
+
 
