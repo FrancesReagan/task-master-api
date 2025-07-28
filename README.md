@@ -374,4 +374,5 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           
           -should see Status: 200 OK  -- and in the body of the response back should be that specific task id, title of task, description of specific task, status of task, project id of
             project assoicated with task, name of project, description of project, user id associated with project, and time stamp.
-         <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/458c3496-d6ea-418d-9f3b-28cb8f64b79c" />
+            <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/458c3496-d6ea-418d-9f3b-28cb8f64b79c" />
+         
