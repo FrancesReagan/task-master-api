@@ -496,6 +496,10 @@ _Backend Deployment on Render.com_
 <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/4aee595c-9a2a-4477-8921-5b03d92c6c16" />
 
 
+<img width="354" height="244" alt="image" src="https://github.com/user-attachments/assets/8962cd91-3af7-4de2-90aa-a20cddb1dc43" />
+
+
+
 
 
 
