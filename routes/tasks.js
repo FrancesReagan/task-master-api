@@ -65,8 +65,34 @@ const tasks = await Task.find({ project: projectId });
   }
 });
 
+// GET /api/tasks/:taskId - get single task by ID//
+router.get("/tasks/:taskId", async (req,res) => {
+  try {
+    const { taskId } = req.params;
+
+    // find the task and populate the associated project//
+    const task = await Task.findById(taskId).populate("project");
+
+    if(!task) {
+     return res.status(404).json({ message: "task was not found"});
+    }
+
+    // authorization or auth check---see if user in question owns the parent project of the task in question//
+    if (task.project.user.toString()!==req.user._id.toString()){
+      return res.status(403).json({ message: "Access is denied-- you don't own this task's project"});
+    }
+
+    res.json(task);
+
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+
+
 // PUT  /api/tasks/:id  - to UPDATE the task with Authorization//
-router.put("/tasks/:taskid", async (req,res) => {
+router.put("/tasks/:taskId", async (req,res) => {
   try {
    
     const { taskId } = req.params;
