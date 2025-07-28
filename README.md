@@ -501,6 +501,11 @@ _Backend Deployment on Render.com_
 
 
 
+------------------------------------------------------------------------------------------------
+__ESSENTIAL PROJECT REFERENCES__
+_Core Dependencies_
+*  Express.js -- [Express.js](https://expressjs.com/en/5x/api.html)
+*  
 
 
 
