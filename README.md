@@ -384,6 +384,7 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
 
 ---------------------------------------------------------------
 
+
  * __Update a Task__
   
   _click new HTTP request in postman_
@@ -408,10 +409,10 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
  
           
           -click send
+
           
           -should see Status: 200 OK -----and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see:
 
             - UPDATED task -- in this case just the status of task was updated.
-            <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/3ba0001a-0200-4444-83d4-bd3b7cc3b0f8" />
-
-            
+           
+ <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/3ba0001a-0200-4444-83d4-bd3b7cc3b0f8" />
