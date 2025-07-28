@@ -325,9 +325,15 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           
           -click send
           
-          -should see Status: 201 Created and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see: -title of project, description, , status, project id associated with
+          -should see Status: 201 Created and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see: -title of task, description or task, , status, project id associated with
            the task, task id, and createdAt time stamp.
-       <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/8c3a5037-a2f0-46d4-9add-f9cbec56dab8" />
+           <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/35e8cd92-acf1-49c0-905b-3ad3620b5955" />
+
+
+
+       -------------------------------------------------------------------------------------------------------------------------------
+
+       
  
        
 
