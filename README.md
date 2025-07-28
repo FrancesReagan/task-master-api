@@ -333,13 +333,24 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
 
        -------------------------------------------------------------------------------------------------------------------------------
 
+       * __GET All TASKS for Project__
+  
+  _click new HTTP request in postman_
+  
+     - Method:GET
        
+     - URL endpoint to test: http://localhost:3000/api/projects/PROJECT_ID_HERE/tasks
+       
+     - Headers: authorization: Bearer _ user token here (use the user token from the user you created the project for here
+       
+       -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
  
-       
-
-
-       
+       (note: if you were just now creating tasks for this project---make sure you delete the request body content--otherwise you won't see the
+       list of tasks associated with that user's token and project id)
+ 
+          -click send
           
-         
-          
+          -should see Status: 200 OK  -- and in the body of the response back should be a list of all the tasks with their task id, task title, task description,
+           status of the task, associated project id, and time stamp.
 
+         <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/272cd234-6f6b-4493-99ec-fb1122d9db52" />
