@@ -205,8 +205,9 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
        
           - Copy the project Id from the response.
 
-          - make a few more projects for this user by repeating the above steps but with new project name and description---save the project id with the user's id in a separate document to retrieve later to put
-            in Postman.
+          - make a few more projects for this user by repeating the above steps but with new project name and description---save the project id with
+            
+             the user's id in a separate document to retrieve later to put in Postman.
             
             for example:
             
@@ -219,8 +220,8 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
        -------------------------------------------------------------------------------------------------
        
 
-* __GET All projects)__ -
-* 
+* __GET All projects)__ 
+  
   _click new HTTP request in postman_
   
      - Method: GET 
@@ -257,8 +258,11 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
  
           -click send
           
-          -should see Status: 200 OK  -- and in the body of the response back should be that specific project id, name of project, description of project, user associated with project, and time stamp.
+          -should see Status: 200 OK  -- and in the body of the response back should be that specific project id,
        
+            name of project, description of project, user associated with project, and time stamp.
+ 
+
        
             <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/55bbfb35-178b-4ba7-a6eb-3bb59b0a5628" />
 
