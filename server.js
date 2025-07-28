@@ -27,11 +27,11 @@ app.use("/api/projects", projectRouter);
 // /tasks/:taskId//
 app.use("/api", tasksRouter);
 
-// default route for simple frontend//
+// default route for API successful deployment message//
 app.get("/", (req, res) => {
   res.send(`<h1> Task Manager API</h1>
     <p> API is running successfully</p>
-    <p><a href="/api/projects"TEST API</a></p>
+    <p><a href="/api/projects">TEST API</a></p>
     `)
 });
 
