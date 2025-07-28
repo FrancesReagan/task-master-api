@@ -64,16 +64,313 @@ _Production dependencies_:
 ----------------------------------------------------------------------------------------------------------
 
 __INSTALLATION__:(in VS Code terminal)
+
  *  Clone repo - `git clone https://github.com/FrancesReagan/task-master-api.git`
+   
  *  `cd task-master-api`
+   
  *  install dependecies: `npm i express mongoose jsonwebtoken bcrypt dotenv nodemon`
+   
  *  create a `.env` file in root directory:
+   
    `MONGO_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/
     taskmasterapi?retryWrites=true&w=majority&appName=Cluster0`
+    
     `JWT_SECRET=your_super_secret_jwt_key_here`
+    
    `PORT=3000`
+   
  *  Start the dev server: `npm run dev`
 
    -------------------------------------------
 
-   
+__MANUAL TESTING with POSTMAN ext in VS CODE__
+  _Setup Postman Extension_
+  *  Install extension: search for "Postman" in VS code extensions (shortcut ctrl + shift key + X)
+  *  Sign in: click postman icon in sidebar, sign in to postman
+  *  Test Ready---not using test collections--doing manual testing
+
+ __Manual Testing Guide__
+ 
+ ----------------------------------------------------------------------------------
+ 
+  *  __Register/Create User__: click new HTTP request in postman---
+    
+     - Method: POST
+       
+     - URL endpoint to test: http//localhost:3000/api/users/register
+       
+     - Headers: application/json
+       
+        - click "body" -- click "raw" ---select JSON
+          
+        - type in body:
+           `{
+          
+                "username": "starlight",
+          
+                "email": "starbright@seeyoutonight.com",
+          
+                "password": "wishingstar678"
+          
+             }`
+          
+          -click send
+      
+          -should see Status: 201 ; see token (now created and assigned to this user), username, email, password, and userid (now created and assigned to this user)
+          
+          
+           <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/81741642-dc2d-42eb-ad9b-2a4e99535049" />
+           
+
+            - Copy token from response for next requests.
+              
+           -`Save the users you create's token, username, email, password, and userid in a separate document somewhere for this project so you can use to continue to test--login, create project and tasks, get project
+             and tasks by id, update projects and tasks, and delete project and tasks.`
+
+          -make a few more users to populate data.
+
+
+      ----------------------------------------------------------------------------------------------------------
+     
+
+   * __Login User__ -
+     
+     - Method: POST
+       
+     - URL endpoint to test: http//localhost:3000/api/users/login
+       
+     - Headers: application/json
+       
+        - click "body" -- click "raw" ---select JSON
+          
+        - type in body:
+      
+          
+          
+           `{
+          
+                "email": "starbright@seeyoutonight.com",
+          
+                "password": "wishingstar678"
+          
+             }`
+      
+          
+          -click send
+          
+          -should see Status: 201 and in the body token first, then user id username, email, and password now hashed
+          
+          <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/c30d56fc-478e-4a83-a014-2f165d8b6929" />
+          
+
+       - Copy the token from response.
+
+
+---------------------------------------------------------------------------------------
+
+
+* __Create Project (protected route)__
+  
+  _click new HTTP request in postman_
+  
+     - Method: POST 
+       
+     - URL endpoint to test: http://localhost:3000/api/projects
+       
+     - Headers: content-type: application/json; authorization: Bearer _ user token here
+       
+       -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
+ 
+       -click on "Body" --- and type in the body new project name and description:
+       
+       
+          `{
+       
+              "name": "Interdimensional travel",
+       
+              "description": "top-secret project--transport transportal transportation proven successful"
+       
+    
+           }`
+       
+          
+          -click send
+          
+          -should see Status: 201 Created
+       
+           and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see: -name of project, description, user id associated with project, project id, and createdAt time stamp.
+       
+          <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/e84ffd49-381c-44c8-ae39-37457435e33c" />
+       
+          - Copy the project Id from the response.
+
+          - make a few more projects for this user by repeating the above steps but with new project name and description---save the project id with
+            
+             the user's id in a separate document to retrieve later to put in Postman.
+            
+            for example:
+            
+            
+            <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/23dd0099-00bb-4332-a2a0-df15038585ec" />
+ 
+            
+
+
+       -------------------------------------------------------------------------------------------------
+       
+
+* __GET All projects__ 
+  
+  _click new HTTP request in postman_
+  
+     - Method: GET 
+       
+     - URL endpoint to test: http://localhost:3000/api/projects
+       
+     - Headers: authorization: Bearer _ user token here (use the user token from the user you created the project for here)
+       
+       -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
+ 
+          -click send
+          
+          -should see Status: 200 OK  -- and in the body of the response back should be a list of all the projects with their id, title, decription, user, timestamp.
+        <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/d97c5626-b5b6-43f8-84a8-3385c3bfec80" />
+ 
+       -----------------------------------------------------------------------------------------------------------------------------------------
+       
+  __GET Single Project__ 
+  
+  _click new HTTP request in postman_
+  
+     - Method: GET 
+       
+     - URL endpoint to test: http://localhost:3000/api/projects/PROJECT_ID_HERE
+       
+     - Headers: authorization: Bearer _ user token here (use the user token from the user you created the project for here)
+       
+       -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
+ 
+          -click send
+          
+          -should see Status: 200 OK  -- and in the body of the response back should be that specific project id,
+       
+            name of project, description of project, user associated with project, and time stamp.
+       <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/55bbfb35-178b-4ba7-a6eb-3bb59b0a5628" />
+ 
+
+  -----------------------------------------------------------------------------------------------------
+
+
+  * __Update a Project__
+  
+  _click new HTTP request in postman_
+  
+     - Method: PUT (to update a project use the PUT method) 
+       
+     - URL endpoint to test: http://localhost:3000/api/projects/PROJECT_ID_HERE
+       
+     - Headers: content-type: application/json; authorization: Bearer _ user token here
+       
+       -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
+ 
+       -click on "Body" --- and type in the body your desired updates for the specific project name and description:
+       
+       
+          `{
+       
+              "name": "Moon and Star Power---harnessing moon and starlightto power our homes",
+       
+              "description": "declassified--moon and star power will be utilized for all homes in America"
+    
+           }`
+ 
+          
+          -click send
+          
+          -should see Status: 200 OK -----and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see:
+
+            - UPDATED name of project, UPDATED description, user id associated with  project, project id, and createdAt time stamp.
+        <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/7ab30e14-b083-47ab-8429-47778ed74be6" />
+       
+       --------------------------------------------------------------------------------------------------------
+
+
+       
+* __Create a TASK__
+  
+  _click new HTTP request in postman_
+  
+     - Method: POST 
+       
+     - URL endpoint to test: http://localhost:3000/api/projects/PROJECT_ID_HERE/tasks
+       
+     - Headers: content-type: application/json; authorization: Bearer _ user token here
+       
+       -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
+ 
+       -click on "Body" --- and type in the body new project name and description:
+       
+       
+          `{
+       
+               "title": "Moon and Star Power ---harnessing moon and starlight to power our homes",
+       
+               "description": "declassified--moon and star power will be utilized for all homes in America",
+       
+               "status": "To Do"
+
+           }`
+ 
+          
+          -click send
+          
+          -should see Status: 201 Created and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see: -title of task, description or task, , status, project id associated with
+           the task, task id, and createdAt time stamp.
+           <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/35e8cd92-acf1-49c0-905b-3ad3620b5955" />
+
+
+
+       -------------------------------------------------------------------------------------------------------------------------------
+
+       * __GET All TASKS for Project__
+  
+  _click new HTTP request in postman_
+  
+     - Method:GET
+       
+     - URL endpoint to test: http://localhost:3000/api/projects/PROJECT_ID_HERE/tasks
+       
+     - Headers: authorization: Bearer _ user token here (use the user token from the user you created the project for here
+       
+       -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
+ 
+       (note: if you were just now creating tasks for this project---make sure you delete the request body content--otherwise you won't see the
+       list of tasks associated with that user's token and project id)
+ 
+          -click send
+          
+          -should see Status: 200 OK  -- and in the body of the response back should be a list of all the tasks with their task id, task title, task description,
+           status of the task, associated project id, and time stamp.
+
+         <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/272cd234-6f6b-4493-99ec-fb1122d9db52" />
+
+
+  ---------------------------------------------------------------------------------------
+
+ __GET Single Task__ 
+  
+  _click new HTTP request in postman_
+  
+     - Method: GET 
+       
+     - URL endpoint to test:http://localhost:3000/api/tasks/TASK_ID_HERE
+       
+     - Headers: authorization: Bearer _ user token here (use the user token from the user you created the project for here)
+       
+       -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
+ 
+          -click send
+          
+          -should see Status: 200 OK  -- and in the body of the response back should be that specific task id
+        
