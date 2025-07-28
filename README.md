@@ -463,3 +463,7 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
 
 
   
+--------------------------------------------------------------------------------------------------------------------
+
+__DEPLOYMENT TEST__
+_Deployment on Render.com
