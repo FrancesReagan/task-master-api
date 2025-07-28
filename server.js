@@ -27,6 +27,14 @@ app.use("/api/projects", projectRouter);
 // /tasks/:taskId//
 app.use("/api", tasksRouter);
 
+// default route for simple frontend//
+app.get("/", (req, res) => {
+  res.send(`<h1> Task Manager API</h1>
+    <p> API is running successfully</p>
+    <p><a href="/api/projects"TEST API</a></p>
+    `)
+});
+
 // database connection---the app.listen() is inside the database connection callback in order to ensure the server only starts AFTER the database is connected//
 db.once("open", () => {
 app.listen(PORT, () => console.log(`Server is listening on localhost:${PORT}`));
