@@ -467,3 +467,12 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
 
 __DEPLOYMENT TEST__
 _Deployment on Render.com
+
+
+
+
+
+
+
+------------------------------------------
+Acknowledgements: Thank to my instructors Colton Wright and Abraham Tavarez for their guidance and to my fellow classmates of 2025-RTT-23 Cohort for their feedback and support
