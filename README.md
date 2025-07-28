@@ -466,12 +466,20 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
 --------------------------------------------------------------------------------------------------------------------
 
 __DEPLOYMENT TEST__
+
 _Backend Deployment on Render.com_
+
  * go to `render.com` and sign up or login
+   
  * create new web service: click `new +` ----select `web service` ----connect to your GitHub account--select `task-master-api` repo
- * configure build settings on render: name: task-master-api; runtime: node ; build command: npm install; start command: node server.js
- * add environmental variables: MONGO_URI=your_mongodb_atlas_connection_string; JWT_SECRET=your_jwt_secret; PORT=3000
- * deploy: "
+   
+ * configure build settings on render: name: task-master-api; runtime: node ; build command: npm install; start command: node server.js; select "Free" for the instance type.
+   
+ * add environmental variables: MONGO_URI=your_mongodb_atlas_connection_string; JWT_SECRET=your_jwt_secret; PORT=3000 -- can manually add--- or click option `add from `.env`
+   
+   --navigate to your .env file in the repo and then select `add variables`---this will instantly populate these.
+   
+ * deploy: click `Deploy Web service"
 
 
 
