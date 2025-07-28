@@ -106,16 +106,22 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           
         - type in body:
            `{
+          
                 "username": "starlight",
+          
                 "email": "starbright@seeyoutonight.com",
+          
                 "password": "wishingstar678"
+          
              }`
           
           -click send
       
           -should see Status: 201 ; see token (now created and assigned to this user), username, email, password, and userid (now created and assigned to this user)
           
+          
            <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/81741642-dc2d-42eb-ad9b-2a4e99535049" />
+           
 
             - Copy token from response for next requests.
               
@@ -124,7 +130,9 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
 
           -make a few more users to populate data.
 
+
       ----------------------------------------------------------------------------------------------------------
+     
 
    * __Login User__ -
      
@@ -137,23 +145,30 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
         - click "body" -- click "raw" ---select JSON
           
         - type in body:
+      
+          
           
            `{
+          
                 "email": "starbright@seeyoutonight.com",
           
                 "password": "wishingstar678"
           
              }`
+      
           
           -click send
           
           -should see Status: 201 and in the body token first, then user id username, email, and password now hashed
           
           <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/c30d56fc-478e-4a83-a014-2f165d8b6929" />
+          
 
        - Copy the token from response.
 
+
 ---------------------------------------------------------------------------------------
+
 
 * __Create Project (protected route)__
   
@@ -169,13 +184,16 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
  
        -click on "Body" --- and type in the body new project name and description:
        
+       
           `{
        
               "name": "Interdimensional travel",
        
               "description": "top-secret project--transport transportal transportation proven successful"
+       
     
            }`
+       
           
           -click send
           
@@ -191,15 +209,20 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
             in Postman.
             
             for example:
+            
+            
             <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/23dd0099-00bb-4332-a2a0-df15038585ec" />
  
             
 
 
        -------------------------------------------------------------------------------------------------
+       
 
 * __GET All projects)__ -
+* 
   _click new HTTP request in postman_
+  
      - Method: GET 
        
      - URL endpoint to test: http://localhost:3000/api/projects
@@ -211,14 +234,19 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           -click send
           
           -should see Status: 200 OK  -- and in the body of the response back should be a list of all the projects with their id, title, decription, user, timestamp.
+       
+       
             <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/d97c5626-b5b6-43f8-84a8-3385c3bfec80" />
 
             
 
   ------------------------------------------------------------------------------------------------------------------
 
-  __GET Single Project__ -
+
+  __GET Single Project__ 
+  
   _click new HTTP request in postman_
+  
      - Method: GET 
        
      - URL endpoint to test: http://localhost:3000/api/projects/PROJECT_ID_HERE
@@ -231,11 +259,15 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           
           -should see Status: 200 OK  -- and in the body of the response back should be that specific project id, name of project, description of project, user associated with project, and time stamp.
        
+       
             <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/55bbfb35-178b-4ba7-a6eb-3bb59b0a5628" />
 
-       
+
+
 
   -----------------------------------------------------------------------------------------------------
+
+
 
   * __Update a Project__
   
@@ -251,6 +283,7 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
  
        -click on "Body" --- and type in the body your desired updates for the specific project name and description:
        
+       
           `{
        
               "name": "Moon and Star Power---harnessing moon and starlightto power our homes",
@@ -258,12 +291,14 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
               "description": "declassified--moon and star power will be utilized for all homes in America"
     
            }`
+ 
           
           -click send
           
           -should see Status: 200 OK -----and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see:
 
             - UPDATED name of project, UPDATED description, user id associated with  project, project id, and createdAt time stamp.
+       
 
              <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/7ab30e14-b083-47ab-8429-47778ed74be6" />
  
@@ -271,6 +306,7 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
        
 
        --------------------------------------------------------------------------------------------------------
+
 
        
 * __Create a TASK__
@@ -287,6 +323,7 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
  
        -click on "Body" --- and type in the body new project name and description:
        
+       
           `{
        
                "title": "Moon and Star Power ---harnessing moon and starlight to power our homes",
@@ -296,12 +333,14 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
                "status": "To Do"
 
            }`
+ 
           
           -click send
           
           -should see Status: 201 Created and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see: -title of project, description, , status, project id associated with
            the task, task id, and createdAt time stamp.
-       
+ 
+           
            <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/8c3a5037-a2f0-46d4-9add-f9cbec56dab8" />
 
        
