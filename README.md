@@ -255,8 +255,9 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           
           -click send
           
-          -should see Status: 200 OK -----and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see: - UPDATED name of project, UPDATED description, user id associated with
-             project, project id, and createdAt time stamp.
+          -should see Status: 200 OK -----and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see:
+
+            - UPDATED name of project, UPDATED description, user id associated with  project, project id, and createdAt time stamp.
 
              <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/7ab30e14-b083-47ab-8429-47778ed74be6" />
 
