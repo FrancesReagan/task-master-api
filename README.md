@@ -280,6 +280,7 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
        -click on "Body" --- and type in the body new project name and description:
        
           `{
+       
                "title": "Moon and Star Power ---harnessing moon and starlight to power our homes",
        
                "description": "declassified--moon and star power will be utilized for all homes in America",
@@ -290,7 +291,8 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           
           -click send
           
-          -should see Status: 201 Created and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see: -title of project, description, , status, user id associated with project,                project id, and createdAt time stamp.
+          -should see Status: 201 Created and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see: -title of project, description, , status, project id associated with
+           the task, task id, and createdAt time stamp.
        
            <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/8c3a5037-a2f0-46d4-9add-f9cbec56dab8" />
 
