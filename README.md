@@ -247,17 +247,19 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
        
           `{
        
-              "name": "Sideways Interdimensional travel",
+              "name": "Moon and Star Power---harnessing moon and starlightto power our homes",
        
-              "description": "top-secret project--Sideways transport transportal transportation proven successful"
+              "description": "declassified--moon and star power will be utilized for all homes in America"
     
            }`
           
           -click send
           
-          -should see Status: 201 Created
-       
-           and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see: -name of project, description, user id associated with project, project id, and createdAt time stamp.
+          -should see Status: 200 OK -----and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see: - UPDATED name of project, UPDATED description, user id associated with
+             project, project id, and createdAt time stamp.
+
+             <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/7ab30e14-b083-47ab-8429-47778ed74be6" />
+
        
           
 
