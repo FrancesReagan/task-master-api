@@ -226,7 +226,40 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           -click send
           
           -should see Status: 200 OK  -- and in the body of the response back should be that specific project id, name of project, description of project, user associated with project, and time stamp.
+       
             <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/55bbfb35-178b-4ba7-a6eb-3bb59b0a5628" />
+
+  -----------------------------------------------------------------------------------------------------
+
+  * __Update a Project__
+  
+  _click new HTTP request in postman_
+  
+     - Method: PUT (to update a project use the PUT method) 
+       
+     - URL endpoint to test: http://localhost:3000/api/projects/PROJECT_ID_HERE
+       
+     - Headers: content-type: application/json; authorization: Bearer _ user token here
+       
+       -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
+ 
+       -click on "Body" --- and type in the body your desired updates for the specific project name and description:
+       
+          `{
+       
+              "name": "Sideways Interdimensional travel",
+       
+              "description": "top-secret project--Sideways transport transportal transportation proven successful"
+    
+           }`
+          
+          -click send
+          
+          -should see Status: 201 Created
+       
+           and in the returned body --check "raw" as sometimes "pretty" does not update right away---should see: -name of project, description, user id associated with project, project id, and createdAt time stamp.
+       
+          
 
 
        
