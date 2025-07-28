@@ -416,3 +416,25 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
             - UPDATED task -- in this case just the status of task was updated.
            
  <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/3ba0001a-0200-4444-83d4-bd3b7cc3b0f8" />
+
+
+
+ -----------------------------------------------------------------------
+
+ 
+* __DELETE a Task__
+  
+  _click new HTTP request in postman_
+  
+     - Method: DELETE
+       
+     - URL endpoint to test: http://localhost:3000/api/tasks/TASK_ID_HERE
+       
+     - Headers: content-type: application/json; authorization: Bearer _ user token here
+    
+       
+       -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
+        - ensure the request body is empty befor you hit send---
+
+      -should see Status: 200 OK and message in response body { "message": "Task deleted successfully"}
+  <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/b18140c9-5726-4dda-9626-de4ce205909a" />
