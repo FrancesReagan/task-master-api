@@ -235,11 +235,15 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           -click send
           
           -should see Status: 200 OK  -- and in the body of the response back should be a list of all the projects with their id, title, decription, user, timestamp.
+ 
+       
        
        
             <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/d97c5626-b5b6-43f8-84a8-3385c3bfec80" />
 
             
+
+
 
   ------------------------------------------------------------------------------------------------------------------
 
