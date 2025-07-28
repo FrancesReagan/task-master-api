@@ -354,3 +354,23 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
            status of the task, associated project id, and time stamp.
 
          <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/272cd234-6f6b-4493-99ec-fb1122d9db52" />
+
+
+  ---------------------------------------------------------------------------------------
+
+ __GET Single Task__ 
+  
+  _click new HTTP request in postman_
+  
+     - Method: GET 
+       
+     - URL endpoint to test:http://localhost:3000/api/tasks/TASK_ID_HERE
+       
+     - Headers: authorization: Bearer _ user token here (use the user token from the user you created the project for here)
+       
+       -click on "Authorization"  --select "Bearer Token" from type drop down ---insert token from user into token input field
+ 
+          -click send
+          
+          -should see Status: 200 OK  -- and in the body of the response back should be that specific task id
+        
