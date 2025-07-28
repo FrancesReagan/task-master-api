@@ -463,3 +463,43 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
 
 
   
+--------------------------------------------------------------------------------------------------------------------
+
+__DEPLOYMENT TEST__
+
+_Backend Deployment on Render.com_
+
+ * go to `render.com` and sign up or login
+   
+ * create new web service: click `new +` ----select `web service` ----connect to your GitHub account--select `task-master-api` repo
+   
+ * configure build settings on render: name: task-master-api; runtime: node ; build command: npm install; start command: node server.js; select "Free" for the instance type.
+   
+ * add environmental variables: MONGO_URI=your_mongodb_atlas_connection_string; JWT_SECRET=your_jwt_secret; PORT=3000 -- can manually add--- or click option add from `.env`
+   
+   --navigate to your .env file in the repo and then select `add variables`---this will instantly populate these.
+   
+ * deploy: click `Deploy Web service" ---- check that it is successfully deployed----will get a deployed url: like -- https://task-master-api-94i3.onrender.com
+   
+ * create a simple front-end: just one HTML file and an API--keep on Render.com;
+   
+                              - add `simple-frontend` folder in the backend file structure and in that that folder create `index.html`;
+   
+                              - make simple index.html file that displays message API is running successfully";
+   
+                              - add this line `app.use(express.static("public"));` to the backend server.s file --- put after the express.json() middleware---
+   
+                                 and before the API route handlers---this way the static files are served first---then the API routes will handle the endpoint
+   
+                                 `/api/` requests.
+   
+<img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/4aee595c-9a2a-4477-8921-5b03d92c6c16" />
+
+
+
+
+
+
+
+------------------------------------------
+Acknowledgements: Thank to my instructors Colton Wright and Abraham Tavarez for their guidance and to my fellow classmates of 2025-RTT-23 Cohort for their feedback and support
