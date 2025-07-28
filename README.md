@@ -480,12 +480,21 @@ _Backend Deployment on Render.com_
    --navigate to your .env file in the repo and then select `add variables`---this will instantly populate these.
    
  * deploy: click `Deploy Web service" ---- check that it is successfully deployed----will get a deployed url: like -- https://task-master-api-94i3.onrender.com
+   
  * create a simple front-end: just one HTML file and an API--keep on Render.com;
+   
                               - add `simple-frontend` folder in the backend file structure and in that that folder create `index.html`;
+   
                               - make simple index.html file that displays message API is running successfully";
+   
                               - add this line `app.use(express.static("public"));` to the backend server.s file --- put after the express.json() middleware---
+   
                                  and before the API route handlers---this way the static files are served first---then the API routes will handle the endpoint
+   
                                  `/api/` requests.
+   
+<img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/4aee595c-9a2a-4477-8921-5b03d92c6c16" />
+
 
 
 
