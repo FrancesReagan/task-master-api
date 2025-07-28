@@ -192,6 +192,8 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
             
             for example:
             <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/23dd0099-00bb-4332-a2a0-df15038585ec" />
+ 
+            
 
 
        -------------------------------------------------------------------------------------------------
@@ -211,6 +213,8 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           -should see Status: 200 OK  -- and in the body of the response back should be a list of all the projects with their id, title, decription, user, timestamp.
             <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/d97c5626-b5b6-43f8-84a8-3385c3bfec80" />
 
+            
+
   ------------------------------------------------------------------------------------------------------------------
 
   __GET Single Project__ -
@@ -228,6 +232,8 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
           -should see Status: 200 OK  -- and in the body of the response back should be that specific project id, name of project, description of project, user associated with project, and time stamp.
        
             <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/55bbfb35-178b-4ba7-a6eb-3bb59b0a5628" />
+
+       
 
   -----------------------------------------------------------------------------------------------------
 
@@ -260,6 +266,8 @@ __MANUAL TESTING with POSTMAN ext in VS CODE__
             - UPDATED name of project, UPDATED description, user id associated with  project, project id, and createdAt time stamp.
 
              <img width="1280" height="764" alt="image" src="https://github.com/user-attachments/assets/7ab30e14-b083-47ab-8429-47778ed74be6" />
+ 
+       
        
 
        --------------------------------------------------------------------------------------------------------
