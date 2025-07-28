@@ -500,15 +500,5 @@ _Backend Deployment on Render.com_
 
 
 
-
-------------------------------------------------------------------------------------------------
-__ESSENTIAL PROJECT REFERENCES__
-_Core Dependencies_
-*  Express.js -- [Express.js](https://expressjs.com/en/5x/api.html)
-*  
-
-
-
-
 ------------------------------------------
 Acknowledgements: Thank to my instructors Colton Wright and Abraham Tavarez for their guidance and to my fellow classmates of 2025-RTT-23 Cohort for their feedback and support
