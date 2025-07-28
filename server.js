@@ -17,6 +17,9 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// simple frontend//
+app.use(express.static('simple-frontend'));
+
 // route handlers -- mounting//
 app.use("/api/users", usersRouter);
 app.use("/api/projects", projectRouter);
